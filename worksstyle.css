@@ -1,0 +1,420 @@
+      :root {
+        --blood: #d3192a;
+        --blood-dark: #8a0f19;
+        --soot: #0b0b0b;
+        --ink: #111;
+        --ash: #e8e8e8;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        color: #eee;
+      }
+      a {
+        color: #ffd9dd;
+      }
+      .wrap {
+        width: min(1240px, 94vw);
+        margin: clamp(80px, 9svh, 120px) auto 10svh;
+      }
+
+      /* Header */
+      .head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 20px;
+      }
+      .title {
+        font: 800 clamp(36px, 8vw, 96px) / 0.9 "Instrument Serif", serif;
+        margin: 0;
+        color: #fff;
+        letter-spacing: 0.01em;
+        text-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+      }
+      .filters {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .chip {
+        border: 1px dashed var(--blood-dark);
+        color: #f1f1f1;
+        background: #0f0f0f;
+        padding: 9px 14px;
+        border-radius: 999px;
+        font: 800 11px/1 "Barlow";
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: 0.15s ease;
+        user-select: none;
+      }
+      .chip:hover {
+        transform: translateY(-1px);
+      }
+      .chip[aria-pressed="true"] {
+        border-color: var(--blood);
+        filter: contrast(1.08);
+      }
+
+      /* Grid */
+      .grid {
+        --gap: clamp(12px, 2.2vw, 22px);
+        display: grid;
+        gap: var(--gap);
+        grid-template-columns: repeat(12, 1fr);
+      }
+      .span-4 {
+        grid-column: span 4;
+      }
+      .span-6 {
+        grid-column: span 6;
+      }
+      .span-8 {
+        grid-column: span 8;
+      }
+
+      /* Card */
+      .card {
+        position: relative;
+        aspect-ratio: 4/3;
+        overflow: hidden;
+        border-radius: 16px;
+        border: 2px solid #1b1b1b;
+        background: #0d0d0d;
+        box-shadow: 0 18px 34px rgba(0, 0, 0, 0.55),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+        isolation: isolate;
+      }
+      .card a {
+        position: absolute;
+        inset: 0;
+        display: block;
+      }
+      .card__img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: contrast(0.95) saturate(0.85);
+        transform: scale(1.02);
+        transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.2, 1),
+          filter 0.3s ease;
+      }
+      .card__ink {
+        position: absolute;
+        inset: -1px;
+        pointer-events: none;
+        mix-blend-mode: multiply;
+        opacity: 0.9;
+        background: radial-gradient(
+            40% 60% at 20% 10%,
+            rgba(255, 255, 255, 0.05),
+            transparent 60%
+          ),
+          radial-gradient(
+            50% 60% at 80% 90%,
+            rgba(255, 255, 255, 0.05),
+            transparent 60%
+          );
+      }
+      .card__scratches {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.25;
+        mix-blend-mode: overlay;
+        background: repeating-linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.06) 0 3px,
+          transparent 3px 6px
+        );
+      }
+      .card:hover .card__img {
+        transform: scale(1.06);
+        filter: contrast(1) saturate(1);
+      }
+      .card:focus-within {
+        outline: 2px solid var(--blood);
+        outline-offset: 4px;
+      }
+
+      /* label */
+      .label {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        padding: 14px 16px;
+        color: #f4f4f4;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.65) 38%,
+          rgba(0, 0, 0, 0.88) 100%
+        );
+      }
+      .label__t {
+        font: 800 clamp(16px, 2.6vw, 26px) / 1 "Instrument Serif", serif;
+        margin: 0 0 4px;
+      }
+      .label__m {
+        font: 700 11px/1 "Barlow";
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        opacity: 0.86;
+      }
+      .label__desc {
+        margin-top: 6px;
+        font: 500 13px/1.4 "Barlow";
+        opacity: 0.85;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        overflow: hidden;
+      }
+
+      /* Modal */
+      dialog.work {
+        inset: 0;
+        border: 0;
+        padding: 0;
+        width: min(980px, 94vw);
+        max-height: 92svh;
+        margin: auto;
+        border-radius: 18px;
+        overflow: auto;
+        background: #0f0f0f;
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.65);
+      }
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.7);
+      }
+      .work__hero {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        filter: contrast(0.98);
+      }
+      .work__body {
+        padding: 18px clamp(16px, 3vw, 28px) 24px;
+        color: #eaeaea;
+      }
+      .work__meta {
+        font: 700 11px/1 "Barlow";
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #ffd9dd;
+        margin-bottom: 10px;
+      }
+      .work__h {
+        font: 800 clamp(22px, 4.6vw, 48px) / 1 "Instrument Serif", serif;
+        margin: 0.2rem 0 0.8rem;
+      }
+      .work__desc {
+        font: 500 16px/1.6 "Barlow";
+        color: #dedede;
+      }
+      .work__close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 5;
+        border: 0;
+        background: linear-gradient(180deg, var(--blood), var(--blood-dark));
+        color: #fff;
+        padding: 10px 12px;
+        border-radius: 12px;
+        font: 800 12px/1 "Barlow";
+        letter-spacing: 0.12em;
+        cursor: pointer;
+      }
+      .is-hidden {
+        display: none !important;
+      }
+
+      /* ==== FIX: cards keep shape and black bg ==== */
+      .card {
+        position: relative;
+        aspect-ratio: 4/3;
+        min-height: 240px; /* ensures visible height on slow/missing images */
+        border-radius: 16px;
+        border: 2px solid #1b1b1b;
+        background: var(--soot); /* force solid near-black bg */
+        box-shadow: 0 18px 34px rgba(0, 0, 0, 0.55),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end; /* so label sticks to bottom */
+      }
+
+      /* Image always fills, but black shows if missing */
+      .card__img {
+        flex: 1 0 auto;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background: #0b0b0b; /* fallback layer */
+        display: block;
+        transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.2, 1),
+          filter 0.3s ease;
+      }
+
+      /* Keep label readable, sticks at bottom */
+      .label {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 14px 16px;
+        color: var(--ash);
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.65) 38%,
+          rgba(0, 0, 0, 0.9) 100%
+        );
+      }
+
+      /* ===== Responsive Tweaks ===== */
+      @media (max-width: 1440px) {
+        .wrap {
+          width: min(1080px, 98vw);
+        }
+        .title {
+          font-size: clamp(32px, 6vw, 72px);
+        }
+        .grid {
+          --gap: clamp(10px, 2vw, 18px);
+        }
+      }
+      @media (max-width: 1024px) {
+        .wrap {
+          width: min(820px, 98vw);
+        }
+        .head {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+        .title {
+          font-size: clamp(24px, 7vw, 48px);
+        }
+        .grid {
+          grid-template-columns: repeat(6, 1fr);
+        }
+        .span-4 {
+          grid-column: span 6;
+        }
+        .span-6 {
+          grid-column: span 6;
+        }
+        .span-8 {
+          grid-column: span 6;
+        }
+      }
+      @media (max-width: 430px) {
+        .wrap {
+          width: 100vw;
+          margin: 40px 0 6svh;
+          padding: 0 4vw;
+        }
+        .head {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+        .title {
+          font-size: clamp(18px, 10vw, 32px);
+        }
+        .filters {
+          gap: 6px;
+        }
+        .chip {
+          padding: 7px 10px;
+          font-size: 10px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        .span-4,
+        .span-6,
+        .span-8 {
+          grid-column: span 1;
+        }
+        .card {
+          min-height: 160px;
+        }
+        .label {
+          padding: 10px 8px;
+        }
+        dialog.work {
+          width: 98vw;
+          max-height: 96svh;
+          border-radius: 10px;
+        }
+        .work__body {
+          padding: 10px 6vw 16px;
+        }
+        .work__h {
+          font-size: clamp(16px, 7vw, 28px);
+        }
+      }
+/* Navigation Bar Styles */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 4vw;
+  background: rgba(11, 11, 11, 0.8); /* Using --soot with transparency */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #1b1b1b;
+}
+
+.nav__brand {
+  font: 800 20px "Instrument Serif", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav__links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__links a {
+  font: 800 11px "Barlow";
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ash);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav__links a:hover {
+  color: var(--blood);
+}
+
+/* Ensure the main content doesn't get hidden under the fixed nav */
+body {
+  padding-top: 60px;
+}

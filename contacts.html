@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="en" class="theme-grunge">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — Tracy Tran</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* =======================================
+     CONTACTS PAGE
+     ======================================= */
+      main.contacts {
+        min-height: 100svh;
+        width: min(1200px, 92vw);
+        margin: clamp(84px, 10svh, 120px) auto 8svh;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: clamp(22px, 3vw, 40px);
+        align-items: start;
+      }
+      .card {
+        background: var(--panel);
+        color: var(--ash);
+        border: 2px solid var(--blood-dark);
+        border-radius: 16px;
+        box-shadow:
+          0 18px 34px rgba(0, 0, 0, 0.55),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+        overflow: clip;
+      }
+      .card--halo {
+        position: relative;
+      }
+      .card--halo::after {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.025) 0 4px,
+          transparent 4px 10px
+        );
+        mix-blend-mode: overlay;
+      }
+
+      .panel {
+        padding: clamp(18px, 2.6vw, 28px);
+      }
+
+      .title {
+        font:
+          800 clamp(28px, 6vw, 60px) / 0.95 "Instrument Serif",
+          serif;
+        margin: 0 0 0.5rem;
+        background: linear-gradient(120deg, #fff, #d8d8d8, #fff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+        letter-spacing: 0.02em;
+      }
+      .subtitle {
+        font:
+          600 13px/1.2 "Plus Jakarta Sans",
+          system-ui;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #cfcfcf;
+        margin: 0 0 1.2rem;
+      }
+
+      /* form */
+      form.contact {
+        display: grid;
+        gap: 14px;
+      }
+      .row {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      label {
+        display: block;
+        font:
+          600 12px/1 "Plus Jakarta Sans",
+          system-ui;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #cfcfcf;
+        margin: 0 0 6px;
+      }
+      .field {
+        position: relative;
+        background: #0d0d0d;
+        border: 1px solid #2a2a2a;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        transition:
+          border-color 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+      .field:focus-within {
+        border-color: var(--blood);
+        box-shadow: 0 0 0 3px rgba(211, 25, 42, 0.22);
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        background: transparent;
+        border: 0;
+        outline: 0;
+        color: var(--ash);
+        font:
+          500 16px/1.3 "Plus Jakarta Sans",
+          system-ui;
+        padding: 14px 14px;
+      }
+      textarea {
+        resize: none;
+        min-height: 140px;
+      }
+
+      .helpline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 4px;
+        gap: 10px;
+        color: #bdbdbd;
+        font:
+          600 12px/1 "Plus Jakarta Sans",
+          system-ui;
+        letter-spacing: 0.08em;
+      }
+      .counter {
+        opacity: 0.8;
+      }
+      .error {
+        color: #ff9ea8;
+        display: none;
+      }
+      .field.invalid {
+        border-color: #ff4d58;
+        box-shadow: 0 0 0 3px rgba(255, 77, 88, 0.22);
+      }
+      .field.invalid + .error {
+        display: block;
+      }
+
+      .btn {
+        appearance: none;
+        border: 0;
+        cursor: pointer;
+        padding: 14px 18px;
+        border-radius: 12px;
+        background: linear-gradient(180deg, var(--blood), var(--blood-dark));
+        color: #fff;
+        font: 800 14px/1 "Plus Jakarta Sans";
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        box-shadow:
+          0 10px 20px rgba(0, 0, 0, 0.45),
+          0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+        transition:
+          transform 0.12s ease,
+          filter 0.2s ease;
+      }
+      .btn:hover {
+        filter: brightness(1.05);
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .btn--ghost {
+        background: transparent;
+        color: var(--ash);
+        border: 2px dashed var(--blood-dark);
+      }
+
+      /* right column */
+      .contact-info {
+        display: grid;
+        gap: 16px;
+      }
+
+      .info-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: #0e0e0e;
+        border: 1px dashed #2a2a2a;
+      }
+
+      /*social chips */
+      .socials {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      .socials a {
+        text-decoration: none;
+        text-align: center;
+        padding: 14px 12px;
+        border-radius: 12px;
+        border: 1px dashed var(--blood-dark);
+        background:
+          radial-gradient(
+            120px 40px at 30% 20%,
+            rgba(255, 255, 255, 0.05),
+            transparent 60%
+          ),
+          #0e0e0e;
+        color: #e7e7e7;
+        font: 800 12px/1 "Plus Jakarta Sans";
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        position: relative;
+        transition:
+          transform 0.12s ease,
+          border-color 0.2s ease,
+          filter 0.2s ease;
+      }
+      .socials a::after {
+        /* torn edge */
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.04) 0 3px,
+          transparent 3px 6px
+        );
+        mix-blend-mode: overlay;
+        border-radius: 12px;
+      }
+      .socials a:hover {
+        transform: translateY(-1px) rotate(-0.4deg);
+        border-color: var(--blood);
+        filter: contrast(1.1);
+      }
+
+      /* promo band */
+      .promo {
+        margin-top: 6px;
+        padding: 16px 14px;
+        border-radius: 12px;
+        border: 1px solid #2a2a2a;
+        background: #0e0e0e;
+      }
+      .promo p {
+        margin: 0;
+        font:
+          600 12px/1.6 "Just Jakarta Sans",
+          system-ui;
+        letter-spacing: 0.08em;
+        color: #bdbdbd;
+      }
+      .promo strong {
+        color: #ffe6e9;
+      }
+
+      /* toast */
+      .toast {
+        position: fixed;
+        left: 50%;
+        top: 14px;
+        transform: translateX(-50%) translateY(-20px);
+        background: #101010;
+        color: #eaeaea;
+        border: 1px solid #2a2a2a;
+        padding: 10px 14px;
+        border-radius: 10px;
+        z-index: 999;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.25s ease,
+          transform 0.25s ease;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.45);
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      .process.flow {
+        display: grid;
+        gap: 1.25rem;
+      }
+      .process img {
+        width: 100%;
+        height: auto;
+        border-radius: 1rem;
+      }
+      .process__blurb {
+        margin: 0 0 0.25rem;
+        line-height: 1.5;
+        color: var(--text-muted, #bbb);
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* ===========================
+       Responsive Tweaks
+      ============================ */
+
+      @media (max-width: 1440px) {
+        main.contacts {
+          width: min(1000px, 96vw);
+          gap: clamp(18px, 2vw, 32px);
+        }
+        .panel {
+          padding: clamp(16px, 2vw, 24px);
+        }
+        .title {
+          font-size: clamp(24px, 5vw, 48px);
+        }
+      }
+
+      /* 1024px and below */
+      @media (max-width: 1024px) {
+        main.contacts {
+          width: min(800px, 98vw);
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        aside.card.panel {
+          margin-top: 18px;
+        }
+        .row {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+        .socials {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
+
+      /* 430px and below (mobile) */
+      @media (max-width: 430px) {
+        main.contacts {
+          width: 100vw;
+          margin: 48px 0 24px 0;
+          padding: 0 0.5rem;
+          gap: 14px;
+        }
+        .panel {
+          padding: 10px 6px;
+        }
+        .title {
+          font-size: 22px;
+        }
+        .subtitle {
+          font-size: 11px;
+        }
+        .row {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+        input,
+        textarea {
+          font-size: 14px;
+          padding: 10px 10px;
+        }
+        .btn,
+        .btn--ghost {
+          padding: 10px 12px;
+          font-size: 12px;
+        }
+        .info-row,
+        .promo {
+          padding: 10px 8px;
+        }
+        .socials {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+      }
+      /* NAVIGATION */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 12;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 24px;
+        background: rgba(15, 15, 15, 0.65);
+        backdrop-filter: blur(4px) saturate(120%);
+      }
+      .nav__brand {
+        font-family: "Instrument Serif", serif;
+        font-size: 22px;
+        letter-spacing: 0.05em;
+        color: var(--cream);
+        text-decoration: none;
+        text-shadow:
+          0 1px 0 rgba(0, 0, 0, 0.4),
+          0 0 6px rgba(0, 0, 0, 0.25);
+      }
+      .nav__links {
+        display: flex;
+        gap: 32px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .nav__links li {
+        position: relative;
+        padding: 0 10px;
+      }
+      .nav__links li:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 14px;
+        background: rgba(243, 239, 230, 0.45);
+      }
+      .nav__links a {
+        font-family: "Plus Jakarta Sans", ui-sans-serif, sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        color: var(--cream);
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        text-shadow: 0 0 6px rgba(0, 0, 0, 0.35);
+        transition:
+          color 0.3s ease,
+          text-shadow 0.3s ease;
+        position: relative;
+      }
+      .nav__links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 2px;
+        background: var(--deep-red);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.35s ease;
+      }
+      .nav__links a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      /* NAV RESPONSIVE TWEAKS */
+      @media (min-width: 1440px) {
+        .nav {
+          padding: 16px 48px;
+          font-size: 1.1em;
+        }
+        .nav__brand {
+          font-size: 28px;
+        }
+        .nav__links {
+          gap: 44px;
+        }
+        .nav__links a {
+          font-size: 15px;
+        }
+      }
+      @media (max-width: 1024px) {
+        .nav {
+          padding: 8px 14px;
+        }
+        .nav__brand {
+          font-size: 20px;
+        }
+        .nav__links {
+          gap: 18px;
+        }
+        .nav__links li {
+          padding: 0 6px;
+        }
+        .nav__links a {
+          font-size: 12px;
+          letter-spacing: 0.18em;
+        }
+        .nav__links li:not(:last-child)::after {
+          height: 12px;
+        }
+      }
+      @media (max-width: 430px) {
+        .nav {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 6px 8px;
+          gap: 4px;
+        }
+        .nav__brand {
+          font-size: 17px;
+          margin-bottom: 4px;
+        }
+        .nav__links {
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+        .nav__links li {
+          padding: 0 2px;
+        }
+        .nav__links a {
+          font-size: 11px;
+          letter-spacing: 0.14em;
+          padding: 2px 0;
+        }
+        .nav__links li:not(:last-child)::after {
+          height: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="theme-grunge">
+    <!-- Nav -->
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__brand" href="index.html">Tracy Tran</a>
+      <ul class="nav__links">
+        <li><a href="index.html#home">About</a></li>
+        <li><a href="works.html">Works</a></li>
+        <li><a href="contacts.html" aria-current="page">Contacts</a></li>
+      </ul>
+    </nav>
+
+    <main class="contacts" id="content">
+      <!-- Left: form -->
+      <section class="card card--halo panel" aria-labelledby="c-title">
+        <h1 id="c-title" class="title">Let’s talk!</h1>
+        <p class="subtitle">Commissions • collaboration • questions</p>
+
+        <form
+          class="contact"
+          id="contactForm"
+          name="contact"
+          method="POST"
+          data-formspree="https://formspree.io/f/xdkdqjjp"
+        >
+          <div class="row">
+            <div>
+              <label for="name">Your name</label>
+              <div class="field">
+                <input id="name" name="name" autocomplete="name" required />
+              </div>
+              <p class="error">Please enter your name.</p>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <div class="field">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+              <p class="error">Please enter a valid email.</p>
+            </div>
+          </div>
+
+          <div>
+            <label for="subject">Subject</label>
+            <div class="field">
+              <input id="subject" name="subject" autocomplete="on" required />
+            </div>
+            <p class="error">Please add a subject.</p>
+          </div>
+
+          <div>
+            <label for="message">Message</label>
+            <div class="field">
+              <textarea
+                id="message"
+                name="message"
+                maxlength="1200"
+                required
+              ></textarea>
+            </div>
+            <div class="helpline">
+              <span>Be as detailed as you like.</span>
+              <span class="counter"><span id="count">0</span>/1200</span>
+            </div>
+            <p class="error">Tell me a little about your project.</p>
+          </div>
+
+          <div style="display: flex; gap: 10px; flex-wrap: wrap">
+            <button class="btn" type="submit">Send</button>
+            <button class="btn btn--ghost" type="button" id="mailtoBtn">
+              Open mail app
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Right: info/socials -->
+      <aside class="card panel" aria-labelledby="r-title">
+        <h2
+          id="r-title"
+          class="title"
+          style="font-size: clamp(20px, 4vw, 34px)"
+        >
+          Others
+        </h2>
+
+        <div class="contact-info">
+          <div class="info-row">
+            <span
+              style="
+                font-weight: 800;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+              "
+              >Email</span
+            >
+            <code id="theEmail">trankhanhwork@gmail.com</code>
+            <button
+              class="btn"
+              id="copyBtn"
+              style="margin-left: auto; padding: 10px 12px"
+            >
+              Copy
+            </button>
+          </div>
+
+          <div class="info-row">
+            <span
+              style="
+                font-weight: 800;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+              "
+              >Based</span
+            >
+            <code>Hanoi / Ho Chi Minh City, Viet Nam</code>
+          </div>
+
+          <div class="socials" aria-label="Social links">
+            <a
+              href="https://www.instagram.com/artof.ruin/"
+              target="_blank"
+              rel="noreferrer"
+              >Instagram</a
+            >
+            <a
+              href="https://www.facebook.com/alice.tracy.7524?locale=vi_VN"
+              target="_blank"
+              rel="noreferrer"
+              >Facebook</a
+            >
+            <a
+              href="https://www.behance.net/khanhchitran1"
+              target="_blank"
+              rel="noreferrer"
+              >Behance</a
+            >
+          </div>
+
+          <div class="promo">
+            <p>
+              <strong>Currently open</strong> to freelance & collabs. Pitch me
+              your wildest imaginations.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      (function () {
+        const f = document.getElementById("contactForm");
+        const message = document.getElementById("message");
+        const count = document.getElementById("count");
+        const emailEl = document.getElementById("theEmail");
+        const toast = document.getElementById("toast");
+        const formspree = f.getAttribute("data-formspree")?.trim();
+
+        // autosize textarea + counter
+        function autosize() {
+          message.style.height = "auto";
+          message.style.height = Math.min(message.scrollHeight, 420) + "px";
+          count.textContent = message.value.length;
+        }
+        ["input", "change"].forEach((ev) =>
+          message.addEventListener(ev, autosize),
+        );
+        autosize();
+
+        // simple validation
+        function setInvalid(input, invalid) {
+          const field = input.closest(".field");
+          if (!field) return;
+          field.classList.toggle("invalid", invalid);
+        }
+        f.addEventListener("input", (e) => {
+          const t = e.target;
+          if (t.matches("input[required], textarea[required]")) {
+            const bad =
+              !t.value.trim() ||
+              (t.type === "email" &&
+                !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(t.value));
+            setInvalid(t, bad);
+          }
+        });
+
+        function showToast(msg) {
+          toast.textContent = msg;
+          toast.classList.add("show");
+          setTimeout(() => toast.classList.remove("show"), 1800);
+        }
+
+        // copy email
+        document
+          .getElementById("copyBtn")
+          .addEventListener("click", async () => {
+            try {
+              await navigator.clipboard.writeText(emailEl.textContent.trim());
+              showToast("Email copied");
+            } catch {
+              showToast("Unable to copy");
+            }
+          });
+
+        // mailto fallback
+        document.getElementById("mailtoBtn").addEventListener("click", () => {
+          const addr = emailEl.textContent.trim();
+          const subj = encodeURIComponent(
+            document.getElementById("subject").value || "Hello",
+          );
+          const body = encodeURIComponent(message.value || "");
+          window.location.href = `mailto:${addr}?subject=${subj}&body=${body}`;
+        });
+
+        // submit: Formspree if configured, else just mailto notice
+        f.addEventListener(
+          "submit",
+          async (e) => {
+            e.preventDefault();
+
+            const required = ["name", "email", "subject", "message"].map((id) =>
+              document.getElementById(id),
+            );
+            let bad = false;
+            required.forEach((el) => {
+              const invalid =
+                !el.value.trim() ||
+                (el.type === "email" &&
+                  !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value));
+              setInvalid(el, invalid);
+              bad = bad || invalid;
+            });
+            if (bad) {
+              showToast("Please fix the highlighted fields");
+              return;
+            }
+
+            if (formspree && formspree.startsWith("https://")) {
+              try {
+                const data = new FormData(f);
+                const res = await fetch(formspree, {
+                  method: "POST",
+                  body: data,
+                  headers: { Accept: "application/json" },
+                });
+                if (res.ok) {
+                  f.reset();
+                  autosize();
+                  showToast("Message sent — thank you!");
+                } else {
+                  showToast("Couldn’t send. Try mail app.");
+                }
+              } catch {
+                showToast("Network error. Try mail app.");
+              }
+            } else {
+              showToast("No form service set — opening mail app.");
+              document.getElementById("mailtoBtn").click();
+            }
+          },
+          { passive: false },
+        );
+      })();
+    </script>
+  </body>
+</html>
