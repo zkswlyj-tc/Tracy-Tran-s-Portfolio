@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 604.5 876">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: 0em;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #671720;
+        stroke-miterlimit: 10;
+        stroke-width: 4px;
+      }
+
+      .cls-3 {
+        font-size: 50.1px;
+      }
+
+      .cls-3, .cls-4, .cls-5 {
+        fill: #c2b59b;
+        font-family: InstrumentSerif-Regular, 'Instrument Serif';
+      }
+
+      .cls-4 {
+        font-size: 46px;
+      }
+
+      .cls-6 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-5 {
+        font-size: 20px;
+      }
+
+      .cls-7 {
+        letter-spacing: 0em;
+      }
+
+      .cls-8 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-9 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-10 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-11 {
+        letter-spacing: 0em;
+      }
+
+      .cls-12 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-13 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-14 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-15 {
+        letter-spacing: 0em;
+      }
+
+      .cls-16 {
+        letter-spacing: 0em;
+      }
+
+      .cls-17 {
+        letter-spacing: .02em;
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="302.25" cy="653.4" fx="302.25" fy="653.4" r="367.78" gradientTransform="translate(0 -196.1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#671720"/>
+      <stop offset="1" stop-color="#131312"/>
+    </radialGradient>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <rect class="cls-6" width="604.5" height="876" rx="45.8" ry="45.8"/>
+    <path class="cls-2" d="M566.85,78.27v719.45c0,21.98-16.5,39.79-36.9,39.79H74.45c-20.4,0-36.9-17.81-36.9-39.79V78.27c0-21.98,16.5-39.79,36.9-39.79h455.6c20.4,0,36.9,17.81,36.9,39.79h-.1Z"/>
+    <text/>
+    <text class="cls-4" transform="translate(149.27 222.29)"><tspan class="cls-14" x="0" y="0">H</tspan><tspan class="cls-1" x="24.56" y="0">anoi - Amsterdam </tspan><tspan class="cls-14" x="-40.87" y="55.2">H</tspan><tspan class="cls-1" x="-16.31" y="55.2">igh School </tspan><tspan class="cls-10" x="153.29" y="55.2">f</tspan><tspan x="165.16" y="55.2">or the Gi</tspan><tspan class="cls-8" x="298.28" y="55.2">f</tspan><tspan x="310.61" y="55.2">ted</tspan></text>
+    <text class="cls-5" transform="translate(275.19 28.97)"><tspan x="0" y="0">educ</tspan><tspan class="cls-11" x="32.1" y="0">a</tspan><tspan x="39.96" y="0">tion</tspan></text>
+    <text class="cls-5" transform="translate(24.71 471.58) rotate(-90)"><tspan x="0" y="0">educ</tspan><tspan class="cls-11" x="32.1" y="0">a</tspan><tspan x="39.96" y="0">tion</tspan></text>
+    <text class="cls-5" transform="translate(578.55 404.42) rotate(90)"><tspan x="0" y="0">educ</tspan><tspan class="cls-11" x="32.1" y="0">a</tspan><tspan x="39.96" y="0">tion</tspan></text>
+    <text class="cls-5" transform="translate(279.53 850.4) scale(1 -1)"><tspan x="0" y="0">educ</tspan><tspan class="cls-11" x="32.1" y="0">a</tspan><tspan x="39.96" y="0">tion</tspan></text>
+    <text class="cls-3" transform="translate(175.53 396.57)"><tspan x="0" y="0">R</tspan><tspan class="cls-16" x="25.7" y="0">M</tspan><tspan x="58.62" y="0">IT </tspan><tspan class="cls-12" x="102.71" y="0">U</tspan><tspan x="128.96" y="0">ni</tspan><tspan class="cls-13" x="163.68" y="0">v</tspan><tspan class="cls-7" x="182.77" y="0">ersi</tspan><tspan class="cls-9" x="243.09" y="0">t</tspan><tspan class="cls-7" x="255.06" y="0">y</tspan><tspan x="-20.52" y="60.12">Bachelor of Design</tspan><tspan class="cls-17" x="6.94" y="120.24">(</tspan><tspan x="24.98" y="120.24">Digital </tspan><tspan class="cls-15" x="146.52" y="120.24">M</tspan><tspan class="cls-7" x="179.33" y="120.24">edia)</tspan></text>
+  </g>
+</svg>
