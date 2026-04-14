@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 161 379">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #efdeca;
+        filter: url(#drop-shadow-1);
+        font-family: Zapfino, Zapfino;
+        font-size: 72px;
+      }
+    </style>
+    <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="7" dy="7"/>
+      <feGaussianBlur result="blur" stdDeviation="5"/>
+      <feFlood flood-color="#700" flood-opacity=".75"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <text class="cls-1" transform="translate(32.4 130.33)"><tspan x="0" y="0">by</tspan></text>
+  </g>
+</svg>
