@@ -61,6 +61,58 @@
 
       <section class="grid" id="grid" aria-live="polite">
         <article
+  class="card"
+  data-tags="design, motion"
+  data-title="Orthographic Study 01"
+  data-year="2024"
+  data-hero="asset/ortho_render_main.png"
+>
+  <img
+    class="card__img"
+    src="asset/ortho_render_main.png"
+    alt="Orthographic 3D render"
+    loading="lazy"
+  />
+  <div class="card__ink"></div>
+  <div class="card__scratches"></div>
+  <a href="projects/ortho-study.html" aria-label="Open Orthographic Study"></a>
+  <div class="label">
+    <h3 class="label__t">Orthographic Study 01</h3>
+    <div class="label__m">3D Motion • Visual Design</div>
+    <p class="label__desc">
+      A technical experiment in Blender utilizing an orthographic lens to translate 3D depth into flattened, geometric 2D visuals.
+    </p>
+  </div>
+
+  <template class="card__desc-template">
+    <p>
+      This project investigates the intersection of <strong>3D spatiality and 2D graphic design</strong>. By utilizing an orthographic camera within Blender, the standard perspective is removed, creating a purely geometric visual language.
+    </p>
+    <p>
+      The focus was on how lighting and material shaders behave when depth is flattened. It demonstrates a workflow where 3D physics and light are used as tools to generate sophisticated, non-perspectival motion graphics.
+    </p>
+
+    <div style="margin-top: 1rem;">
+      <video controls playsinline loop style="width: 100%; border-radius: 8px; background: #000;">
+        <source src="asset/motion_graphics.mov" type="video/mp4" />
+      </video>
+      
+      <p style="font: 500 11px 'Barlow'; margin-top: 8px; opacity: 0.6; text-align: right;">
+        Video not playing? 
+        <a href="https://drive.google.com/file/d/1qBDzK11uCV812t8APtM_Y6UCFKhqdQ1j/view?usp=sharing" target="_blank" style="color: var(--blood); text-decoration: underline;">
+          View on Drive
+        </a>
+      </p>
+    </div>
+
+    <div style="margin: 1.5rem 0; border-top: 1px dashed var(--blood-dark); padding-top: 1rem;">
+      <p style="font: 700 11px 'Barlow'; text-transform: uppercase; color: var(--blood); letter-spacing: 0.1em;">
+        Technical Specs: Cycles / Orthographic Camera
+      </p>
+    </div>
+  </template>
+</article>
+        <article
           class="card"
           data-tags="design"
           data-title="Uninvited Guest"
